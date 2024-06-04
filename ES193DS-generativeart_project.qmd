@@ -1,6 +1,6 @@
 ---
 title: "ES193DS-generativeart_project"
-name: "Michelle Shteynberg"
+author: "Michelle Shteynberg"
 date: "2024-05-31"
 format: html 
 editor: visual
@@ -9,29 +9,67 @@ execute: # for all code chunks
     message: false # do not display messages
 ---
 
-link to 
+link to forked repository:
+https://github.com/michelle-shteynberg/ES193DS-generativeart.git
 
 ### Part 2a. Workshop (structured only)
 
-#### a. Get set up.
-
-Fork the repo from the [original GitHub repository](https://github.com/rstudio-conf-2022/art-from-code) into your own account and download it into your computer.
-
-#### b. Do the introductory exercises.
+#### Introductory exercises
 
 Read and complete exercises from “Get Started” ([link](https://art-from-code.netlify.app/day-1/session-1/)). Annotate your code to demonstrate that you know how it works.
 
-#### c. Art of your choice: tricks
+#### 1. Exercise 1
+```{r}
+library(ggplot2)
+library(tibble)
+
+mpg |>
+  ggplot(aes(displ, hwy, colour = cyl)) + # setting up the aesthetics, color based on cylinder
+  geom_point(show.legend = FALSE, size = 6) + # first layer of points, different shades of blue
+  geom_point(show.legend = FALSE, size = 2, colour = "pink2") + # second layer of points, pink
+  coord_flip() +  # flipping x and y axes
+  theme_void() + # minimal theme
+  scale_color_gradient() # adding colors as a gradient
+  
+```
+
+#### 2. Exercise 2
+```{r}
+
+```
+
+#### 3. Exercise 3
+```{r}
+
+```
+
+#### 4. Exercise 4
+
+#### Art of your choice: tricks
 
 Choose one: spatial noise tricks, polygon tricks, shading tricks  
 Complete all exercises. Again, annotate your code.  
 
-#### d. Art of your choice: iteration, tiles, pixels  
+```{r}
+
+
+
+
+```
+
+#### Art of your choice: iteration, tiles, pixels  
 
 Choose one: iterated function systems, tiles and tessellations, pixel filters.  
 Complete all exercises. Again, annotate your code.
 
-#### e. Put it all together
+```{r}
+
+
+
+
+```
+
+#### Creating 3 art pieces
 
 Create 3 art pieces that combines elements of what you learned from parts b-d. For each piece, write an accompanying caption that includes:  
 
@@ -40,5 +78,30 @@ Create 3 art pieces that combines elements of what you learned from parts b-d. F
 - A 2-3 sentence description of your inspiration  
 - A 2-3 sentence description of what _specific components_ from each part (b-d) you drew from to create the piece
 
+```{r}
 
 
+
+
+```
+
+```{r}
+
+
+
+
+
+```
+
+```{r}
+
+
+
+
+```
+
+#### Summary
+
+lastly: a 8-10 sentence summary at the end about your process: What was new for you? What was familiar? What did you learn? How did following the exercises/tutorials go for you?
+
+**enter answer here**
