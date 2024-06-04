@@ -1,0 +1,44 @@
+---
+title: "ES193DS-generativeart_project"
+name: "Michelle Shteynberg"
+date: "2024-05-31"
+format: html 
+editor: visual
+execute: # for all code chunks
+    warning: false # do not display warnings
+    message: false # do not display messages
+---
+
+link to 
+
+### Part 2a. Workshop (structured only)
+
+#### a. Get set up.
+
+Fork the repo from the [original GitHub repository](https://github.com/rstudio-conf-2022/art-from-code) into your own account and download it into your computer.
+
+#### b. Do the introductory exercises.
+
+Read and complete exercises from “Get Started” ([link](https://art-from-code.netlify.app/day-1/session-1/)). Annotate your code to demonstrate that you know how it works.
+
+#### c. Art of your choice: tricks
+
+Choose one: spatial noise tricks, polygon tricks, shading tricks  
+Complete all exercises. Again, annotate your code.  
+
+#### d. Art of your choice: iteration, tiles, pixels  
+
+Choose one: iterated function systems, tiles and tessellations, pixel filters.  
+Complete all exercises. Again, annotate your code.
+
+#### e. Put it all together
+
+Create 3 art pieces that combines elements of what you learned from parts b-d. For each piece, write an accompanying caption that includes:  
+
+- The title of your piece  
+- The date you created it  
+- A 2-3 sentence description of your inspiration  
+- A 2-3 sentence description of what _specific components_ from each part (b-d) you drew from to create the piece
+
+
+
