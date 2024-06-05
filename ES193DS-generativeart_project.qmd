@@ -683,6 +683,8 @@ library(sf)
 
 ```{r}
 
+
+
 ```
 
 
@@ -695,37 +697,155 @@ library(sf)
 
 #### Creating 3 art pieces
 
-Create 3 art pieces that combines elements of what you learned from parts b-d. For each piece, write an accompanying caption that includes:  
+## 1. Water ridge by ridge, 06/04/24
+
+```{r}
+library(rayshader)
+library(tibble)
+library(ambient)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(tictoc)
+library(dplyr)
+library(png)
+library(grid)
+
+
+sample_canva2 <- function(seed = NULL, n = 6) { # specifying number of colors, interpolating between colors
+  if(!is.null(seed)) set.seed(seed)
+  sample(ggthemes::canva_palettes, 1)[[1]] |>
+    (\(x) colorRampPalette(x)(n))()  
+}
+
+# Define a custom color palette with different shades of blue
+  custom_palette <- c("deepskyblue2", "#99CCFF", "#66B2FF", "#3399FF", "aquamarine3")
+  
+ # Interpolate between the colors to create the desired number of shades
+sample_canva2(n = 5) # Adjust the value of n as desired
+
+ridge_art <- function(seed = NULL, pixels = 2500) {  # uses spatial noise to produce patterns, matrix form
+  
+  if(!is.null(seed)) set.seed(seed)
+  long_grid( # creating grid 
+    x = seq(from = 0, to = 1, length.out = pixels),
+    y = seq(from = 0, to = 1, length.out = pixels) # defining y and x coordinates
+  ) |> 
+    mutate( # modifying data
+      paint = fracture( # creating a pattern
+        x = x, 
+        y = y,
+        noise = gen_simplex, # type of noise function
+        fractal = ridged, # type of fractal pattern
+        octaves = 8, # nymber of octaves used in fractal generation
+        frequency = 10, # frequency of fractal pattern
+        seed = seed
+      ),
+      paint = normalise(paint)
+    ) |>
+    as.array(value = paint) # converting modified data into array
+}
+
+shaded_ridge_art <- function(seed = NULL, custom_palette = NULL, file_name = "ridge_art.png") {
+  art <- ridge_art(seed) # shading with height map, shadow map
+  
+  img <-  if (!is.null(custom_palette)) {
+    custom_texture <- colorRampPalette(custom_palette)(256)
+    height_shade(
+    heightmap = art,
+    texture = custom_texture
+  ) |>
+    add_shadow(
+      shadowmap = ray_shade(
+        heightmap = art, 
+        sunaltitude = 30, 
+        sunangle = 90,
+        multicore = TRUE, 
+        zscale = .05
+      ), 
+      max_darken = .1
+    ) |>
+    plot_map()
+  } else {
+    height_shade(
+      heightmap = art,
+      texture = sample_canva2(seed, 256)
+    ) |>
+      add_shadow(
+        shadowmap = ray_shade(
+          heightmap = art, 
+          sunaltitude = 30, 
+          sunangle = 90,
+          multicore = TRUE, 
+          zscale = .05
+        ), 
+        max_darken = .1
+      ) |>
+      plot_map()
+  }
+  
+ # png::writePNG(img, file_name)
+}
+
+tic()
+shaded_ridge_art(124, custom_palette = custom_palette) # choosing color and style
+toc()
+
+# Load the saved image and overlay circles using ggplot2
+#library(grid)
+#ridge_img <- rasterGrob(readPNG("ridge_art.png"), width = unit(1, "npc"), height = unit(1, "npc"))
+
+# Create random circles data
+#circle_data <- data.frame(
+ # x = runif(10, min = 0, max = 1),
+  #y = runif(10, min = 0, max = 1),
+#  radius = runif(10, min = 0.05, max = 0.2),
+ # col = sample(c("green", "green3", "green4", "limegreen", "greenyellow", "sandybrown", "saddlebrown", "burlywood", "burlywood4", "brown"), 10)
+
+
+# Plot the image and overlay circles
+#ggplot() +
+ # annotation_custom(ridge_img, -Inf, Inf, -Inf, Inf) +
+  #geom_point(data = circle_data, aes(x, y, color = col), size = 10, alpha = 0.5) +
+  #scale_color_identity() +
+  #theme_void()
+
+# I wanted to add green/brown colored circles as another layer to the top, representing frogs on water. However, I spent about 2 hours on it and it would not run, so I decided to just leave it without it.
+
+```
+**I created this piece as an inspiration of the natural environment around us, especially as we live near the ocean. This is an interpretation of the water that we are constantly surrounded by, and what makes up the majority of what we are. Part c, shading tricks, inspired me for this piece, as I immediately saw a body of water in the variety of colors that the part provided me. More specifically I was looking at ridger, shading, and shadowed noise fields, which all helped me create the piece.**
+
+
+```{r}
+
+
+
+
+
+```
+
+- The title of your piece  
+- The date you created it  
+- A 2-3 sentence description of your inspiration  
+- A 2-3 sentence description of what _specific components_ from each part (b-d) you drew from to create the piece
+**m**
+
+```{r}
+
+
+
+
+```
 
 - The title of your piece  
 - The date you created it  
 - A 2-3 sentence description of your inspiration  
 - A 2-3 sentence description of what _specific components_ from each part (b-d) you drew from to create the piece
 
-```{r}
-
-
-
-
-```
-
-```{r}
-
-
-
-
-
-```
-
-```{r}
-
-
-
-
-```
+**m**
 
 #### Summary
 
 lastly: a 8-10 sentence summary at the end about your process: What was new for you? What was familiar? What did you learn? How did following the exercises/tutorials go for you?
 
-**enter answer here**
+**I genuinely learned a lot and enjoyed the process of doing this project. Most of what I learned was new for me, I've never really done anything of the sort in R or any other programming language. I didn't know that we were able to manipulate our data to make something that was a piece of art. I feel as though I have seen pieces of art that resemble what I was doing, but I was always curious as to how one would do it at all in the first place. Using all the new functions and subfunctions was fun to do, and playing around with the project was too. It was cool to see ggplot, and other packages/functions we used in class to visualize biological data, implemented in these artistic projects. Following the exercises and tutorials was extremely helpful in the process, but it still took me a while and I did struggle a bit at some points. It was helpful to use the structured workshop because otherwise, I don't know if I would have been able to do it well (or at all!).**
