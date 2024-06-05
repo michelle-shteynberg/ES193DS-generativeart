@@ -35,15 +35,112 @@ mpg |>
 
 #### 2. Exercise 2
 ```{r}
+polar_art <- function(seed, n, palette) {
+  
+  # set the state of the random number generator
+  set.seed(seed)
+  
+  # data frame containing random values for 
+  # aesthetics we might want to use in the art
+  dat <- tibble(
+    x0 = runif(n),
+    y0 = runif(n),
+    x1 = x0 + runif(n, min = -.2, max = .2),
+    y1 = y0 + runif(n, min = -.2, max = .2),
+    shade = runif(n), 
+    size = runif(n)
+  )
+  
+  # plot segments in various colours, using 
+  # polar coordinates and a gradient palette
+  dat |> 
+    ggplot(aes(
+      x = x0,
+      y = y0,
+      xend = x1,
+      yend = y1,
+      colour = shade,
+      size = size
+    )) +
+    geom_segment(show.legend = FALSE) +
+    coord_polar() +
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_x_continuous(expand = c(0, 0)) + 
+    scale_colour_gradientn(colours = palette) + 
+    scale_size(range = c(0, 10)) + 
+    theme_void()
+}
+
+polar_art(
+  seed = 4, 
+  n = 65, 
+  palette = c("deeppink4", "navyblue", "darkseagreen")
+)
 
 ```
+```{r}
+polar_art <- function(seed, n, palette) {
+  
+  # set the state of the random number generator
+  set.seed(seed)
+  
+  # data frame containing random values for 
+  # aesthetics we might want to use in the art
+  dat <- tibble(
+    x0 = runif(n),
+    y0 = runif(n),
+    x1 = x0 + runif(n, min = -.2, max = .2),
+    y1 = y0 + runif(n, min = -.2, max = .2),
+    shade = runif(n), 
+    size = runif(n)
+  )
+  
+  # plot segments in various colours, using 
+  # polar coordinates and a gradient palette
+  dat |> 
+    ggplot(aes(
+      x = x0,
+      y = y0,
+      xend = x1,
+      yend = y1,
+      colour = shade,
+      size = size
+    )) +
+    geom_segment(show.legend = FALSE) +
+    coord_polar() +
+    scale_y_continuous(expand = c(10, 0)) +
+    scale_x_continuous(expand = c(0, 10)) + 
+    scale_colour_gradientn(colours = palette) + 
+    scale_size(range = c(100, 10)) + 
+    theme_void()
+}
+
+polar_art(
+  seed = 4, 
+  n = 65, 
+  palette = c("deeppink4", "navyblue", "darkgoldenrod")
+)
+```
+**I think that for this exercise, we are naming files with version numbers because they are all very similar and related. We are also using the code in one file to walk us through the code in another, slightly altered file. It allows it to be more accessible in the work that we are doing and it also helps with simplicity and might make it easier to recover a file that was lost. **
 
 #### 3. Exercise 3
 ```{r}
+library(ggthemes)
+library(scales)
 
+# the original function from the first session
+sample_canva <- function(seed = NULL) {
+  if(!is.null(seed)) set.seed(seed)
+  sample(ggthemes::canva_palettes, 1)[[1]]
+}
+
+show_col(sample_canva())
 ```
 
 #### 4. Exercise 4
+```{r}
+
+```
 
 #### Art of your choice: tricks
 
