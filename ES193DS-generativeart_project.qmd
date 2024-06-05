@@ -43,6 +43,113 @@ polar_art <- function(seed, n, palette) {
   # data frame containing random values for 
   # aesthetics we might want to use in the art
   dat <- tibble(
+    x0 = runif(n), # random x starting point
+    y0 = runif(n), # random y starting point
+    x1 = x0 + runif(n, min = -.2, max = .2), # random end points
+    y1 = y0 + runif(n, min = -.2, max = .2),
+    shade = runif(n), # random shade
+    size = runif(n) # random size
+  )
+  
+  # plot segments in various colours, using 
+  # polar coordinates and a gradient palette
+  dat |> 
+    ggplot(aes(
+      x = x0,
+      y = y0,
+      xend = x1,
+      yend = y1,
+      colour = shade,
+      size = size
+    )) +
+    geom_segment(show.legend = FALSE) + # plot segments
+    coord_polar() + # polar coordinates
+    scale_y_continuous(expand = c(0, 0)) + # adjust y axis
+    scale_x_continuous(expand = c(0, 0)) + # adjust x axis
+    scale_colour_gradientn(colours = palette) + # use gradient color palette
+    scale_size(range = c(0, 10)) + # set size range
+    theme_void() # blank theme
+}
+
+polar_art(
+  seed = 4, # random seed
+  n = 65, # data points
+  palette = c("deeppink4", "navyblue", "darkseagreen")
+)
+
+```
+```{r}
+polar_art <- function(seed, n, palette) {
+  
+  # set the state of the random number generator
+  set.seed(seed)
+  
+# data frame containing random values for 
+  # aesthetics we might want to use in the art
+  dat <- tibble(
+    x0 = runif(n), # random x starting point
+    y0 = runif(n), # random y starting point
+    x1 = x0 + runif(n, min = -.2, max = .2), # random end points
+    y1 = y0 + runif(n, min = -.2, max = .2),
+    shade = runif(n), # random shade
+    size = runif(n) # random size
+  )
+  
+  # plot segments in various colours, using 
+  # polar coordinates and a gradient palette
+  dat |> 
+    ggplot(aes(
+      x = x0,
+      y = y0,
+      xend = x1,
+      yend = y1,
+      colour = shade,
+      size = size
+    )) +
+    geom_segment(show.legend = FALSE) +
+    coord_polar() +
+    scale_y_continuous(expand = c(10, 0)) + # adjusted both axes
+    scale_x_continuous(expand = c(0, 10)) + 
+    scale_colour_gradientn(colours = palette) + 
+    scale_size(range = c(100, 10)) + # changed size range
+    theme_void()
+}
+
+polar_art(
+  seed = 4, 
+  n = 65, 
+  palette = c("deeppink4", "navyblue", "darkgoldenrod")
+)
+```
+**I think that for this exercise, we are naming files with version numbers because they are all very similar and related. We are also using the code in one file to walk us through the code in another, slightly altered file. It allows it to be more accessible in the work that we are doing and it also helps with simplicity and might make it easier to recover a file that was lost. **
+
+#### 3. Exercise 3
+```{r}
+library(ggthemes)
+library(scales)
+
+# the original function from the first session
+sample_canva <- function(seed = NULL) {
+  if(!is.null(seed)) set.seed(seed)
+  sample(ggthemes::canva_palettes, 1)[[1]] # randomly select palette from ggthemes::canva_palettes, selects one randomly
+}
+
+show_col(sample_canva()) # generate random palette and display colors
+```
+```{r}
+sample_named_colours <- function(n) {
+  all_colours <- colours(distinct = TRUE)
+  sample(all_colours, n) # getting all distict colors, sample n colors
+}
+
+polar_art <- function(seed, n, palette) { # function to create polar art plot
+  
+  # set the state of the random number generator
+  set.seed(seed)
+  
+  # data frame containing random values for 
+  # aesthetics we might want to use in the art
+  dat <- tibble(
     x0 = runif(n),
     y0 = runif(n),
     x1 = x0 + runif(n, min = -.2, max = .2),
@@ -72,20 +179,22 @@ polar_art <- function(seed, n, palette) {
 }
 
 polar_art(
-  seed = 4, 
-  n = 65, 
-  palette = c("deeppink4", "navyblue", "darkseagreen")
+  seed = 2, # random seed
+  n = 50, # random point
+  palette = c(sample_named_colours(100)) # palette of sampled colors
 )
-
 ```
 ```{r}
+unlist(ggthemes::canva_palettes) # Unlist the ggthemes::canva_palettes list to get a vector of colors, done to make it easier to sample colors from the palettes
+
+sample_canva_colors <- function(n) {
+  sample(unlist(ggthemes::canva_palettes), n) # function to sample n colors from the unlisted palettes
+}
+
 polar_art <- function(seed, n, palette) {
   
-  # set the state of the random number generator
-  set.seed(seed)
   
-  # data frame containing random values for 
-  # aesthetics we might want to use in the art
+  # create a tibble containing random values for aesthetic
   dat <- tibble(
     x0 = runif(n),
     y0 = runif(n),
@@ -108,63 +217,481 @@ polar_art <- function(seed, n, palette) {
     )) +
     geom_segment(show.legend = FALSE) +
     coord_polar() +
-    scale_y_continuous(expand = c(10, 0)) +
-    scale_x_continuous(expand = c(0, 10)) + 
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_x_continuous(expand = c(0, 0)) + 
     scale_colour_gradientn(colours = palette) + 
-    scale_size(range = c(100, 10)) + 
-    theme_void()
+    scale_size(range = c(0, 10)) + 
+    theme_void() # see above for annotations
 }
 
 polar_art(
-  seed = 4, 
-  n = 65, 
-  palette = c("deeppink4", "navyblue", "darkgoldenrod")
+  seed = 2, 
+  n = 50, 
+  palette = c(sample_named_colours(120)) # see above for annotations
 )
-```
-**I think that for this exercise, we are naming files with version numbers because they are all very similar and related. We are also using the code in one file to walk us through the code in another, slightly altered file. It allows it to be more accessible in the work that we are doing and it also helps with simplicity and might make it easier to recover a file that was lost. **
-
-#### 3. Exercise 3
-```{r}
-library(ggthemes)
-library(scales)
-
-# the original function from the first session
-sample_canva <- function(seed = NULL) {
-  if(!is.null(seed)) set.seed(seed)
-  sample(ggthemes::canva_palettes, 1)[[1]]
-}
-
-show_col(sample_canva())
 ```
 
 #### 4. Exercise 4
 ```{r}
+library(dplyr)
+
+# function to generate sample data
+sample_data <- function(seed = NULL, n = 200) {
+  if (!is.null(seed)) set.seed(seed)
+  tibble(
+    x0 = runif(n),
+    y0 = runif(n),
+    x1 = x0 + runif(n, min = -.2, max = .2),
+    y1 = y0 + runif(n, min = -.2, max = .2),
+    shade = runif(n), 
+    size = runif(n),
+    shape = factor(sample(0:22, size = n, replace = TRUE))
+  )
+}
+
+# generate sample data
+dat1 <- sample_data(n = 1000, seed = 123) 
+dat2 <- sample_data(n = 200, seed = 456) |>  
+  mutate(y0 = .3 + y0 * .8, y1 = .3)
+
+# function to create the main plot
+polar_styled_plot <- function() {
+  ggplot() +
+    geom_segment(
+      data = dat1 |> mutate(size = size * 4),
+      aes(x = x0, y = y0, xend = x1, yend = y1, colour = shade, size = size)
+    ) + # add segments for dat1 with modified size
+    geom_segment(
+      data = dat2 |> mutate(size = size / 7), 
+      aes(x = x0, y = y0, xend = x1, yend = y1),
+      lineend = "round", 
+      colour = "white"
+    ) + # add segments for dat2 with modified size and lineend
+    geom_segment(
+      data = dat2 |> mutate(size = size / 30), 
+      aes(x = x0, y = y0, xend = x1, yend = y1),
+      lineend = "round", 
+      colour = "violetred1"
+    ) + # same as above
+    geom_point(
+      data = dat2 |> mutate(size = size * 4),
+      aes(x = x0, y = y0),
+      colour = "lavender"
+    ) + # same as above
+    coord_polar(clip = "off") + # polar coordinates
+    scale_y_continuous(
+      expand = c(0, 0),
+      limits = c(0, 1), 
+      oob = scales::oob_keep
+    ) + # y axis limits
+    scale_x_continuous(
+      expand = c(0, 0), 
+      limits = c(0, 1), 
+      oob = scales::oob_keep
+    ) + # x axis limits
+    scale_colour_gradientn(colours = sample_canva(seed = 3)) + # color gradient
+    scale_size(range = c(0, 10)) + 
+    theme_void() + 
+    guides(
+      colour = guide_none(),
+      size = guide_none(),
+      fill = guide_none(),
+      shape = guide_none() # remove legends
+    )
+}
+
+# Generate and print the plot
+plot <- polar_styled_plot()
+print(plot)
+```
+
+
+#### Art of your choice: shading tricks
+
+```{r}
+library(rayshader)
+library(tibble)
+library(ambient)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(tictoc)
+library(dplyr)
+```
+
+```{r}
+is_within_circle <- function(x_coord, y_coord, x_center, y_center, radius) {
+  (x_coord - x_center)^2 + (y_coord - y_center)^2 < radius^2
+} # takes coordinate vectors as inputs, returns logical vector when coordinates fall within values
+
+additive_circles <- function(n = 10, pixels = 1500, seed = NULL) { # generates n circles at random
+  
+  if(!is.null(seed)) set.seed(seed)
+  
+  # setup canvas, coordinate columns x and y
+  art <- long_grid(
+    x = seq(0, 1, length.out = pixels),
+    y = seq(0, 1, length.out = pixels)
+  )
+  art$paint <- 0 # indicates proportion of circles that each point falls in
+  
+  for(i in 1:n) {
+    
+    # sample a random circle
+    x_center <- runif(1, min = .3, max = .7)
+    y_center <- runif(1, min = .3, max = .7)
+    radius <- runif(1, min = .05, max = .25)
+    
+    # add +1 to all points inside the circle
+    art <- art |>
+      mutate(
+        paint = paint + is_within_circle(
+          x, y, x_center, y_center, radius
+        )
+      )
+  }
+  
+  # normalise paint to [0, 1] range and return
+  art$paint <- normalise(art$paint)
+  return(art)
+}
+
+circle_art <- additive_circles(seed = 300) # generating output from system with seed
+
+circle_array <- circle_art |>
+  as.array(value = paint)  # matrix of values
+
+circle_shadow <- ray_shade( # shading
+  heightmap = circle_array, # using matrix
+  sunaltitude = 23, 
+  sunangle = 135, # positions of illumination source
+  zscale = .01, # specify scale of z-axis, giving circles volume
+  multicore = TRUE
+)
+
+circle_scape <- circle_array |> 
+  height_shade() |> # create texture
+  add_shadow(
+    shadowmap = circle_shadow, # add shadow
+    max_darken = .1
+  )
+
+tic() # measuring time elapsed
+plot_map(circle_scape, rotate = 180) # draw final image, rotate
+toc() # measuring time elapsed between points
+```
+```{r}
+sample_canva2 <- function(seed = NULL, n = 4) { # specifying number of colors, interpolating between colors
+  if(!is.null(seed)) set.seed(seed)
+  sample(ggthemes::canva_palettes, 1)[[1]] |>
+    (\(x) colorRampPalette(x)(n))()  
+}
+
+ridge_art <- function(seed = NULL, pixels = 2000) {  # uses spatial noise to produce patterns, matrix form
+  
+  if(!is.null(seed)) set.seed(seed)
+  long_grid( # creating grid 
+    x = seq(from = 0, to = 1, length.out = pixels),
+    y = seq(from = 0, to = 1, length.out = pixels) # defining y and x coordinates
+  ) |> 
+    mutate( # modifying data
+      paint = fracture( # creating a pattern
+        x = x, 
+        y = y,
+        noise = gen_simplex, # type of noise function
+        fractal = ridged, # type of fractal pattern
+        octaves = 8, # nymber of octaves used in fractal generation
+        frequency = 10, # frequency of fractal pattern
+        seed = seed
+      ),
+      paint = normalise(paint)
+    ) |>
+    as.array(value = paint) # converting modified data into array
+}
+
+shaded_ridge_art <- function(seed = NULL) { # shading with height map, shadow map
+  
+  art <- ridge_art(seed) 
+  height_shade(
+    heightmap = art,
+    texture = sample_canva2(seed, 256)
+  ) |>
+    add_shadow(
+      shadowmap = ray_shade(
+        heightmap = art, 
+        sunaltitude = 30, 
+        sunangle = 90,
+        multicore = TRUE, 
+        zscale = .05
+      ), 
+      max_darken = .1
+    ) |>
+    plot_map()
+}
+
+tic()
+shaded_ridge_art(124) # choosing color and style
+toc()
+
+
+```
+```{r}
+sample_canva2 <- function(seed = NULL, n = 4) {
+  
+  if(!is.null(seed)) set.seed(seed)
+  sample(ggthemes::canva_palettes, 1)[[1]] |>
+    (\(x) colorRampPalette(x)(n))()  
+} # see annotations above
+
+transform_to_curl_space <- function(x, y, frequency = 1, octaves = 10) {
+  curl_noise( # produce new set of coordinates that we are feeding into other noise processes
+    generator = fracture,
+    noise = gen_simplex,
+    fractal = fbm,
+    octaves = octaves,
+    frequency = frequency,
+    x = x,
+    y = y # see annotations above
+  )
+}
+
+
+define_worley_cells <- function(x, y, frequency = 3, octaves = 6) { # using worley noise to construct set of cells
+  fracture(
+    noise = gen_worley,
+    fractal = billow, #using billow fractal style
+    octaves = octaves, # number of octaves for fractal generation
+    frequency = frequency, # frequency of the fractal pattern
+    value = "cell", # generating cell values
+    x = x,
+    y = y # x and y coordinate values
+  ) |>
+    rank() |> # rank values
+    normalise() # normalize values
+}
+
+
+simplex_noise <- function(x, y, frequency = .1, octaves = 10) { # same as above, except now using simplex noise to give us an image that is both smooth and jagged
+  fracture(
+    noise = gen_simplex,
+    fractal = ridged,
+    octaves = octaves,
+    frequency = frequency,
+    x = x,
+    y = y
+  ) |>
+    normalise()
+}
+
+
+ice_floe <- function(seed) { # generating ice floe
+  
+  set.seed(seed) # setting seed for reproducibility
+  
+  grid <- long_grid(
+    x = seq(0, 1, length.out = 2000),
+    y = seq(0, 1, length.out = 2000)
+  ) # generating grid of points, x and y axis
+  
+  coords <- transform_to_curl_space(grid$x, grid$y) # transforming grid coordinates to curl space
+  
+  grid |>
+    mutate(
+      cells = define_worley_cells(coords$x, coords$y), # generating worley cells
+      paint = simplex_noise(x + cells, y + cells), # generating simplex noise with offset by worley cells
+      paint = normalise(paint)
+    ) |> # normalizing noise values
+    as.array(value = paint)
+} # converting modified data into array
+
+shaded_ice_floe <- function(seed) {
+  
+  art <- ice_floe(seed) # create matrix of elevations
+  
+  height_shade(
+    heightmap = art, # shaded elevation map
+    texture = sample_canva2(seed, 258)
+  ) |>
+    add_shadow(
+      shadowmap = ray_shade( # add shadows
+        heightmap = art, 
+        sunaltitude = 50, 
+        sunangle = 100,
+        multicore = TRUE, 
+        zscale = .005
+      ), 
+      max_darken = .06
+    ) |>
+    plot_map() # create output
+}
+
+tic()
+shaded_ice_floe(100) # choosing color and style
+toc()
+
+```
+```{r}
+library(rayshader)
+library(tibble)
+library(ambient)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(dplyr)
+library(tictoc)
+library(here)
+library(rgl)
+```
+
+
+
+```{r}
+sample_canva2 <- function(seed = NULL, n = 4) {
+  
+  if(!is.null(seed)) set.seed(seed)
+  sample(ggthemes::canva_palettes, 1)[[1]] |>
+    (\(x) colorRampPalette(x)(n))()  
+}
+
+transform_to_curl_space <- function(x, y, frequency = 2, octaves = 10) {
+  curl_noise(
+    generator = fracture,
+    noise = gen_simplex,
+    fractal = fbm,
+    octaves = octaves,
+    frequency = frequency,
+    x = x,
+    y = y
+  )
+}
+
+
+define_worley_cells <- function(x, y, frequency = 3, octaves = 9) {
+  fracture(
+    noise = gen_worley,
+    fractal = billow,
+    octaves = octaves,
+    frequency = frequency,
+    value = "cell",
+    x = x,
+    y = y
+  ) |>
+    rank() |> 
+    normalise()
+}
+
+
+simplex_noise <- function(x, y, frequency = .1, octaves = 10) {
+  fracture(
+    noise = gen_simplex,
+    fractal = ridged,
+    octaves = octaves,
+    frequency = frequency,
+    x = x,
+    y = y
+  ) |>
+    normalise()
+}
+
+
+ice_floe <- function(seed) {
+  
+  set.seed(seed)
+  
+  grid <- long_grid(
+    x = seq(0, 1, length.out = 2000),
+    y = seq(0, 1, length.out = 2000)
+  )
+  
+  coords <- transform_to_curl_space(grid$x, grid$y)
+  
+  grid |>
+    mutate(
+      cells = define_worley_cells(coords$x, coords$y),
+      paint = simplex_noise(x + cells, y + cells),
+      paint = normalise(paint)
+    ) |>
+    as.array(value = paint)
+}
+
+icescape_3d <- function(seed) {
+  
+  ice_height <- matrix(0, 2500, 2500)
+  ice_height[251:2250, 251:2250] <- ice_floe(seed)
+  
+  ice_scape <- height_shade(
+    heightmap = ice_height,
+    texture = sample_canva2(seed, 256)
+  ) |>
+    add_shadow(
+      shadowmap = ray_shade(
+        heightmap = ice_height, 
+        sunaltitude = 40, 
+        sunangle = 90,
+        multicore = TRUE, 
+        zscale = .005
+      ), 
+      max_darken = .05
+    )
+  
+  plot_3d(
+    hillshade = ice_scape,
+    heightmap = ice_height,
+    theta = 45,
+    phi = 30,
+    zoom = .75,
+    zscale = .001,
+    background = "#222222",
+    shadow = FALSE,
+    soliddepth = .5,
+    solidcolor = "#222222",
+    windowsize = c(2500, 1500)
+  )
+  
+  render_snapshot(
+    filename = here("output", paste0("icescape_3d_", seed, ".png")), 
+    clear = TRUE
+  )
+}
+
+tic()
+icescape_3d(106)
+toc()
+
+
 
 ```
 
-#### Art of your choice: tricks
+#### Art of your choice: Tiles  
 
-Choose one: spatial noise tricks, polygon tricks, shading tricks  
-Complete all exercises. Again, annotate your code.  
+```{r}
+library(dplyr)
+library(tibble)
+library(ggplot2)
+library(ggforce)
+library(deldir)
+library(ggthemes)
+library(voronoise)
+library(tictoc)
+library(ambient)
+library(purrr)
+library(tidyr)
+library(stringr)
+library(truchet)
+library(sf)
+```
+
+```{r}
+
+```
+
 
 ```{r}
 
 
 
-
 ```
 
-#### Art of your choice: iteration, tiles, pixels  
-
-Choose one: iterated function systems, tiles and tessellations, pixel filters.  
-Complete all exercises. Again, annotate your code.
-
-```{r}
-
-
-
-
-```
 
 #### Creating 3 art pieces
 

@@ -116,13 +116,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introductory-exercises" class="level4">
 <h4 class="anchored" data-anchor-id="introductory-exercises">Introductory exercises</h4>
 <p>Read and complete exercises from “Get Started” (<a href="https://art-from-code.netlify.app/day-1/session-1/">link</a>). Annotate your code to demonstrate that you know how it works.</p>
+</section>
+<section id="exercise-1" class="level4">
+<h4 class="anchored" data-anchor-id="exercise-1">1. Exercise 1</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) <span class="co"># loading in packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(displ, hwy, <span class="at">colour =</span> drv)) <span class="sc">+</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co"># plotting the data in a basic scatterplot, assigning colors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(displ, hwy, <span class="at">colour =</span> cyl)) <span class="sc">+</span> <span class="co"># setting up the aesthetics, color based on cylinder</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="dv">6</span>) <span class="sc">+</span> <span class="co"># first layer of points, different shades of blue</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">colour =</span> <span class="st">"pink2"</span>) <span class="sc">+</span> <span class="co"># second layer of points, pink</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  <span class="co"># flipping x and y axes</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="co"># minimal theme</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>() <span class="co"># adding colors as a gradient</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -130,27 +137,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(displ, hwy, <span class="at">colour =</span> drv, <span class="at">size =</span> cyl)) <span class="sc">+</span> <span class="co"># plotting the data, assigning size and color aesthetics</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># removing legend</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="co"># minimal theme</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>() <span class="co"># assigning colors using palette</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ES193DS-generativeart_project_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-</div>
+</section>
+<section id="exercise-2" class="level4">
+<h4 class="anchored" data-anchor-id="exercise-2">2. Exercise 2</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mpg <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(displ, hwy, <span class="at">colour =</span> drv)) <span class="sc">+</span> <span class="co"># setting up aesthetics for color and axes</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="co"># adding a first layer of points, with color based on a variable</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">colour =</span> <span class="st">"#222222"</span>) <span class="sc">+</span> <span class="co"># adding second layer of points, smaller dark grey dots</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span> <span class="co"># circular layout of points</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span> <span class="co"># minimal theme</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>() <span class="co"># color palette</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>polar_art <span class="ot">&lt;-</span> <span class="cf">function</span>(seed, n, palette) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set the state of the random number generator</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data frame containing random values for </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># aesthetics we might want to use in the art</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x0 =</span> <span class="fu">runif</span>(n), <span class="co"># random x starting point</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0 =</span> <span class="fu">runif</span>(n), <span class="co"># random y starting point</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>), <span class="co"># random end points</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y1 =</span> y0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">shade =</span> <span class="fu">runif</span>(n), <span class="co"># random shade</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">runif</span>(n) <span class="co"># random size</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot segments in various colours, using </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># polar coordinates and a gradient palette</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x0,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y0,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">xend =</span> x1,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">yend =</span> y1,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> shade,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> size</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">+</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># plot segments</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_polar</span>() <span class="sc">+</span> <span class="co"># polar coordinates</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># adjust y axis</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># adjust x axis</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_gradientn</span>(<span class="at">colours =</span> palette) <span class="sc">+</span> <span class="co"># use gradient color palette</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span> <span class="co"># set size range</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="co"># blank theme</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">polar_art</span>(</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">4</span>, <span class="co"># random seed</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">65</span>, <span class="co"># data points</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"deeppink4"</span>, <span class="st">"navyblue"</span>, <span class="st">"darkseagreen"</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -159,11 +191,1554 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>polar_art <span class="ot">&lt;-</span> <span class="cf">function</span>(seed, n, palette) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set the state of the random number generator</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># data frame containing random values for </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># aesthetics we might want to use in the art</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x0 =</span> <span class="fu">runif</span>(n), <span class="co"># random x starting point</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0 =</span> <span class="fu">runif</span>(n), <span class="co"># random y starting point</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>), <span class="co"># random end points</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y1 =</span> y0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">shade =</span> <span class="fu">runif</span>(n), <span class="co"># random shade</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">runif</span>(n) <span class="co"># random size</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot segments in various colours, using </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># polar coordinates and a gradient palette</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x0,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y0,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">xend =</span> x1,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">yend =</span> y1,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> shade,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> size</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">+</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">0</span>)) <span class="sc">+</span> <span class="co"># adjusted both axes</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span> </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_gradientn</span>(<span class="at">colours =</span> palette) <span class="sc">+</span> </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">10</span>)) <span class="sc">+</span> <span class="co"># changed size range</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">polar_art</span>(</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">4</span>, </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">65</span>, </span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"deeppink4"</span>, <span class="st">"navyblue"</span>, <span class="st">"darkgoldenrod"</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ES193DS-generativeart_project_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>I think that for this exercise, we are naming files with version numbers because they are all very similar and related. We are also using the code in one file to walk us through the code in another, slightly altered file. It allows it to be more accessible in the work that we are doing and it also helps with simplicity and might make it easier to recover a file that was lost. </strong></p>
 </section>
-<section id="art-of-your-choice-tricks" class="level4">
-<h4 class="anchored" data-anchor-id="art-of-your-choice-tricks">Art of your choice: tricks</h4>
-<p>Choose one: spatial noise tricks, polygon tricks, shading tricks<br>
-Complete all exercises. Again, annotate your code.</p>
+<section id="exercise-3" class="level4">
+<h4 class="anchored" data-anchor-id="exercise-3">3. Exercise 3</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the original function from the first session</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sample_canva <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">seed =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.null</span>(seed)) <span class="fu">set.seed</span>(seed)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(ggthemes<span class="sc">::</span>canva_palettes, <span class="dv">1</span>)[[<span class="dv">1</span>]] <span class="co"># randomly select palette from ggthemes::canva_palettes, selects one randomly</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">show_col</span>(<span class="fu">sample_canva</span>()) <span class="co"># generate random palette and display colors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ES193DS-generativeart_project_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample_named_colours <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  all_colours <span class="ot">&lt;-</span> <span class="fu">colours</span>(<span class="at">distinct =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(all_colours, n) <span class="co"># getting all distict colors, sample n colors</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>polar_art <span class="ot">&lt;-</span> <span class="cf">function</span>(seed, n, palette) { <span class="co"># function to create polar art plot</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set the state of the random number generator</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data frame containing random values for </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># aesthetics we might want to use in the art</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x0 =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0 =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y1 =</span> y0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">shade =</span> <span class="fu">runif</span>(n), </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">runif</span>(n)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot segments in various colours, using </span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># polar coordinates and a gradient palette</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x0,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y0,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">xend =</span> x1,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">yend =</span> y1,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> shade,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> size</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">+</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span> </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_gradientn</span>(<span class="at">colours =</span> palette) <span class="sc">+</span> </span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span> </span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>()</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="fu">polar_art</span>(</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">2</span>, <span class="co"># random seed</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">50</span>, <span class="co"># random point</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">palette =</span> <span class="fu">c</span>(<span class="fu">sample_named_colours</span>(<span class="dv">100</span>)) <span class="co"># palette of sampled colors</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ES193DS-generativeart_project_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(ggthemes<span class="sc">::</span>canva_palettes) <span class="co"># Unlist the ggthemes::canva_palettes list to get a vector of colors, done to make it easier to sample colors from the palettes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                          Fresh and bright1 
+                                  "#f98866" 
+                          Fresh and bright2 
+                                  "#ff420e" 
+                          Fresh and bright3 
+                                  "#80bd9e" 
+                          Fresh and bright4 
+                                  "#89da59" 
+                  Subdued and proffesional1 
+                                  "#90afc5" 
+                  Subdued and proffesional2 
+                                  "#336b87" 
+                  Subdued and proffesional3 
+                                  "#2a3132" 
+                  Subdued and proffesional4 
+                                  "#763626" 
+                           Dark and earthy1 
+                                  "#46211a" 
+                           Dark and earthy2 
+                                  "#693d3d" 
+                           Dark and earthy3 
+                                  "#ba5536" 
+                           Dark and earthy4 
+                                  "#a43820" 
+                        Crisp and dramatic1 
+                                  "#505160" 
+                        Crisp and dramatic2 
+                                  "#68829e" 
+                        Crisp and dramatic3 
+                                  "#aebd38" 
+                        Crisp and dramatic4 
+                                  "#598234" 
+                                Cool blues1 
+                                  "#003b46" 
+                                Cool blues2 
+                                  "#07575b" 
+                                Cool blues3 
+                                  "#66a5ad" 
+                                Cool blues4 
+                                  "#c4dfe6" 
+                     Outdoorsy and Natural1 
+                                  "#2e4600" 
+                     Outdoorsy and Natural2 
+                                  "#486b00" 
+                     Outdoorsy and Natural3 
+                                  "#a2c523" 
+                     Outdoorsy and Natural4 
+                                  "#7d4427" 
+                        Watery blue-greens1 
+                                  "#021c1e" 
+                        Watery blue-greens2 
+                                  "#004445" 
+                        Watery blue-greens3 
+                                  "#2c7873" 
+                        Watery blue-greens4 
+                                  "#6fb98f" 
+       Primary colors with a vibrant twist1 
+                                  "#375e97" 
+       Primary colors with a vibrant twist2 
+                                  "#fb6542" 
+       Primary colors with a vibrant twist3 
+                                  "#ffbb00" 
+       Primary colors with a vibrant twist4 
+                                  "#3f681c" 
+                     Refreshing and pretty1 
+                                  "#98dbc6" 
+                     Refreshing and pretty2 
+                                  "#5bc8ac" 
+                     Refreshing and pretty3 
+                                  "#e6d72a" 
+                     Refreshing and pretty4 
+                                  "#f18d9e" 
+                  Playful greens and blues1 
+                                  "#324851" 
+                  Playful greens and blues2 
+                                  "#86ac41" 
+                  Playful greens and blues3 
+                                  "#34675c" 
+                  Playful greens and blues4 
+                                  "#7da3a1" 
+                       Fresh and energetic1 
+                                  "#4cb5f5" 
+                       Fresh and energetic2 
+                                  "#b7b8b6" 
+                       Fresh and energetic3 
+                                  "#34675c" 
+                       Fresh and energetic4 
+                                  "#b3c100" 
+                             Surf and turf1 
+                                  "#f4cc70" 
+                             Surf and turf2 
+                                  "#de7a22" 
+                             Surf and turf3 
+                                  "#20948b" 
+                             Surf and turf4 
+                                  "#6ab187" 
+                         Autumn in vermont1 
+                                  "#8d230f" 
+                         Autumn in vermont2 
+                                  "#1e434c" 
+                         Autumn in vermont3 
+                                  "#9b4f0f" 
+                         Autumn in vermont4 
+                                  "#c99e10" 
+                       Icy blues and grays1 
+                                  "#f1f1f2" 
+                       Icy blues and grays2 
+                                  "#bcbabe" 
+                       Icy blues and grays3 
+                                  "#a1d6e2" 
+                       Icy blues and grays4 
+                                  "#1995ad" 
+                         Birds and berries1 
+                                  "#9a9eab" 
+                         Birds and berries2 
+                                  "#5d535e" 
+                         Birds and berries3 
+                                  "#ec96a4" 
+                         Birds and berries4 
+                                  "#dfe166" 
+                             Day and night1 
+                                  "#011a27" 
+                             Day and night2 
+                                  "#063852" 
+                             Day and night3 
+                                  "#f0810f" 
+                             Day and night4 
+                                  "#e6df44" 
+                         Stylish and retro1 
+                                  "#75b1a9" 
+                         Stylish and retro2 
+                                  "#d9b44a" 
+                         Stylish and retro3 
+                                  "#4f6457" 
+                         Stylish and retro4 
+                                  "#acd0c0" 
+                          Shades of citrus1 
+                                  "#eb8a44" 
+                          Shades of citrus2 
+                                  "#f9dc24" 
+                          Shades of citrus3 
+                                  "#4b7447" 
+                          Shades of citrus4 
+                                  "#8eba43" 
+                            Sunset to dusk1 
+                                  "#363237" 
+                            Sunset to dusk2 
+                                  "#2d4262" 
+                            Sunset to dusk3 
+                                  "#73605b" 
+                            Sunset to dusk4 
+                                  "#d09683" 
+                       Bright and tropical1 
+                                  "#f52549" 
+                       Bright and tropical2 
+                                  "#fa6775" 
+                       Bright and tropical3 
+                                  "#ffd64d" 
+                       Bright and tropical4 
+                                  "#9bc01c" 
+                             Warm naturals1 
+                                  "#2e2300" 
+                             Warm naturals2 
+                                  "#6e6702" 
+                             Warm naturals3 
+                                  "#c05805" 
+                             Warm naturals4 
+                                  "#db9501" 
+                              Bold berries1 
+                                  "#50312f" 
+                              Bold berries2 
+                                  "#cb0000" 
+                              Bold berries3 
+                                  "#e4ea8c" 
+                              Bold berries4 
+                                  "#3f6c45" 
+                          Summer sunflower1 
+                                  "#34888c" 
+                          Summer sunflower2 
+                                  "#7caa2d" 
+                          Summer sunflower3 
+                                  "#f5e356" 
+                          Summer sunflower4 
+                                  "#cb6318" 
+                          Modern and crisp1 
+                                  "#0f1b07" 
+                          Modern and crisp2 
+                                  "#ffffff" 
+                          Modern and crisp3 
+                                  "#5c821a" 
+                          Modern and crisp4 
+                                  "#c6d166" 
+                     Timeless and nautical1 
+                                  "#00293c" 
+                     Timeless and nautical2 
+                                  "#1e656d" 
+                     Timeless and nautical3 
+                                  "#f1f3ce" 
+                     Timeless and nautical4 
+                                  "#f62a00" 
+                     Neutral and versatile1 
+                                  "#626d71" 
+                     Neutral and versatile2 
+                                  "#cdcdc0" 
+                     Neutral and versatile3 
+                                  "#ddbc95" 
+                     Neutral and versatile4 
+                                  "#b38867" 
+                          Cheerful brights1 
+                                  "#258039" 
+                          Cheerful brights2 
+                                  "#f5be41" 
+                          Cheerful brights3 
+                                  "#31a9b8" 
+                          Cheerful brights4 
+                                  "#cf3721" 
+                              Garden fresh1 
+                                  "#ee693f" 
+                              Garden fresh2 
+                                  "#f69454" 
+                              Garden fresh3 
+                                  "#fcfdfe" 
+                              Garden fresh4 
+                                  "#739f3d" 
+                           Summer barbeque1 
+                                  "#b9d9c3" 
+                           Summer barbeque2 
+                                  "#752a07" 
+                           Summer barbeque3 
+                                  "#fbcb7b" 
+                           Summer barbeque4 
+                                  "#eb5e30" 
+                               Berry blues1 
+                                  "#1e1f26" 
+                               Berry blues2 
+                                  "#283655" 
+                               Berry blues3 
+                                  "#4d648d" 
+                               Berry blues4 
+                                  "#d0e1f9" 
+                            Lemonade stand1 
+                                  "#f70025" 
+                            Lemonade stand2 
+                                  "#f7efe2" 
+                            Lemonade stand3 
+                                  "#f25c00" 
+                            Lemonade stand4 
+                                  "#f9a603" 
+                       Serene and spa like1 
+                                  "#a1be95" 
+                       Serene and spa like2 
+                                  "#e2dfa2" 
+                       Serene and spa like3 
+                                  "#92aac7" 
+                       Serene and spa like4 
+                                  "#ed5752" 
+                          Fun and tropical1 
+                                  "#4897d8" 
+                          Fun and tropical2 
+                                  "#ffdb5c" 
+                          Fun and tropical3 
+                                  "#fa6e59" 
+                          Fun and tropical4 
+                                  "#f8a055" 
+                            Spicy neutrals1 
+                                  "#af4425" 
+                            Spicy neutrals2 
+                                  "#662e1c" 
+                            Spicy neutrals3 
+                                  "#ebdcb2" 
+                            Spicy neutrals4 
+                                  "#c9a66b" 
+                                   Pastels1 
+                                  "#c1e1dc" 
+                                   Pastels2 
+                                  "#ffccac" 
+                                   Pastels3 
+                                  "#ffeb94" 
+                                   Pastels4 
+                                  "#fdd475" 
+                         Bold and cultured1 
+                                  "#4c3f54" 
+                         Bold and cultured2 
+                                  "#d13525" 
+                         Bold and cultured3 
+                                  "#f2c057" 
+                         Bold and cultured4 
+                                  "#486824" 
+                              Sunny citrus1 
+                                  "#faaf08" 
+                              Sunny citrus2 
+                                  "#fa812f" 
+                              Sunny citrus3 
+                                  "#fa4032" 
+                              Sunny citrus4 
+                                  "#fef3e2" 
+                Crisp complementary colors1 
+                                  "#f4ec6a" 
+                Crisp complementary colors2 
+                                  "#bbcf4a" 
+                Crisp complementary colors3 
+                                  "#e73f0b" 
+                Crisp complementary colors4 
+                                  "#a11f0c" 
+                           Warm and rustic1 
+                                  "#fef2e4" 
+                           Warm and rustic2 
+                                  "#fd974f" 
+                           Warm and rustic3 
+                                  "#c60000" 
+                           Warm and rustic4 
+                                  "#805a3b" 
+                                Neon night1 
+                                  "#f77604" 
+                                Neon night2 
+                                  "#b8d20b" 
+                                Neon night3 
+                                  "#f56c57" 
+                                Neon night4 
+                                  "#231b12" 
+                               Jewel tones1 
+                                  "#7f152e" 
+                               Jewel tones2 
+                                  "#d61800" 
+                               Jewel tones3 
+                                  "#edae01" 
+                               Jewel tones4 
+                                  "#e94f08" 
+                     Polished and inviting1 
+                                  "#eae2d6" 
+                     Polished and inviting2 
+                                  "#d5c3aa" 
+                     Polished and inviting3 
+                                  "#867666" 
+                     Polished and inviting4 
+                                  "#e1b80d" 
+                              Fresh greens1 
+                                  "#265c00" 
+                              Fresh greens2 
+                                  "#68a225" 
+                              Fresh greens3 
+                                  "#b3de81" 
+                              Fresh greens4 
+                                  "#fdffff" 
+                              Wintery reds1 
+                                  "#a10115" 
+                              Wintery reds2 
+                                  "#d72c16" 
+                              Wintery reds3 
+                                  "#f0efea" 
+                              Wintery reds4 
+                                  "#c0b2b5" 
+                             Summer fiesta1 
+                                  "#c7db00" 
+                             Summer fiesta2 
+                                  "#7aa802" 
+                             Summer fiesta3 
+                                  "#f78b2d" 
+                             Summer fiesta4 
+                                  "#e4b600" 
+                          Chocolaty browns1 
+                                  "#301b28" 
+                          Chocolaty browns2 
+                                  "#523634" 
+                          Chocolaty browns3 
+                                  "#b6452c" 
+                          Chocolaty browns4 
+                                  "#ddc5a2" 
+                         Naturally elegant1 
+                                  "#ebdf00" 
+                         Naturally elegant2 
+                                  "#7e7b15" 
+                         Naturally elegant3 
+                                  "#563e20" 
+                         Naturally elegant4 
+                                  "#b38540" 
+                             Cozy and warm1 
+                                  "#662225" 
+                             Cozy and warm2 
+                                  "#b51d0a" 
+                             Cozy and warm3 
+                                  "#ead39c" 
+                             Cozy and warm4 
+                                  "#7d5e3c" 
+                             Violet sunset1 
+                                  "#4b4345" 
+                             Violet sunset2 
+                                  "#556dac" 
+                             Violet sunset3 
+                                  "#f79b77" 
+                             Violet sunset4 
+                                  "#755248" 
+                    Strawberries and cream1 
+                                  "#d8412f" 
+                    Strawberries and cream2 
+                                  "#fe7a47" 
+                    Strawberries and cream3 
+                                  "#fcfdfe" 
+                    Strawberries and cream4 
+                                  "#f5ca99" 
+                           Grecian holiday1 
+                                  "#2988bc" 
+                           Grecian holiday2 
+                                  "#2f496e" 
+                           Grecian holiday3 
+                                  "#f4eade" 
+                           Grecian holiday4 
+                                  "#ed8c72" 
+                            Bold and basic1 
+                                  "#000b29" 
+                            Bold and basic2 
+                                  "#d70026" 
+                            Bold and basic3 
+                                  "#f8f5f2" 
+                            Bold and basic4 
+                                  "#edb83d" 
+                         Vineyard neutrals1 
+                                  "#1e0000" 
+                         Vineyard neutrals2 
+                                  "#500805" 
+                         Vineyard neutrals3 
+                                  "#9d331f" 
+                         Vineyard neutrals4 
+                                  "#bc6d4f" 
+                          Modern and urban1 
+                                  "#f9ba32" 
+                          Modern and urban2 
+                                  "#426e86" 
+                          Modern and urban3 
+                                  "#f8f1e5" 
+                          Modern and urban4 
+                                  "#2f3131" 
+                              Misty greens1 
+                                  "#04202c" 
+                              Misty greens2 
+                                  "#304040" 
+                              Misty greens3 
+                                  "#5b7065" 
+                              Misty greens4 
+                                  "#c9d1c8" 
+                         Sunkissed village1 
+                                  "#d24136" 
+                         Sunkissed village2 
+                                  "#eb8a3e" 
+                         Sunkissed village3 
+                                  "#ebb582" 
+                         Sunkissed village4 
+                                  "#785a46" 
+                               Sun and sky1 
+                                  "#217ca3" 
+                               Sun and sky2 
+                                  "#e29930" 
+                               Sun and sky3 
+                                  "#32384d" 
+                               Sun and sky4 
+                                  "#211f30" 
+                                Aqua blues1 
+                                  "#004d47" 
+                                Aqua blues2 
+                                  "#128277" 
+                                Aqua blues3 
+                                  "#52958b" 
+                                Aqua blues4 
+                                  "#b9c4c9" 
+                               Urban oasis1 
+                                  "#506d2f" 
+                               Urban oasis2 
+                                  "#2a2922" 
+                               Urban oasis3 
+                                  "#f3ebdd" 
+                               Urban oasis4 
+                                  "#7d5642" 
+                      Candy coated brights1 
+                                  "#f47d4a" 
+                      Candy coated brights2 
+                                  "#e1315b" 
+                      Candy coated brights3 
+                                  "#ffec5c" 
+                      Candy coated brights4 
+                                  "#008dcb" 
+                         Muted and antique1 
+                                  "#a4cabc" 
+                         Muted and antique2 
+                                  "#eab364" 
+                         Muted and antique3 
+                                  "#b2473e" 
+                         Muted and antique4 
+                                  "#acbd78" 
+                       Classy and timeless1 
+                                  "#16253d" 
+                       Classy and timeless2 
+                                  "#002c54" 
+                       Classy and timeless3 
+                                  "#efb509" 
+                       Classy and timeless4 
+                                  "#cd7213" 
+                              Cosmopolitan1 
+                                  "#8593ae" 
+                              Cosmopolitan2 
+                                  "#5a4e4d" 
+                              Cosmopolitan3 
+                                  "#7e675e" 
+                              Cosmopolitan4 
+                                  "#dda288" 
+                     Cheerful and friendly1 
+                                  "#2b616d" 
+                     Cheerful and friendly2 
+                                  "#b2dbd5" 
+                     Cheerful and friendly3 
+                                  "#ffffff" 
+                     Cheerful and friendly4 
+                                  "#fa8d62" 
+                                 Nightlife1 
+                                  "#00cffa" 
+                                 Nightlife2 
+                                  "#ff0038" 
+                                 Nightlife3 
+                                  "#ffce38" 
+                                 Nightlife4 
+                                  "#020509" 
+                                   Coastal1 
+                                  "#a5c3cf" 
+                                   Coastal2 
+                                  "#f3d3b8" 
+                                   Coastal3 
+                                  "#e59d5c" 
+                                   Coastal4 
+                                  "#a99f3c" 
+                          Maritime brights1 
+                                  "#257985" 
+                          Maritime brights2 
+                                  "#5ea8a7" 
+                          Maritime brights3 
+                                  "#ffffff" 
+                          Maritime brights4 
+                                  "#ff4447" 
+                             Vintage charm1 
+                                  "#fcc875" 
+                             Vintage charm2 
+                                  "#baa896" 
+                             Vintage charm3 
+                                  "#e6ccb5" 
+                             Vintage charm4 
+                                  "#e38b75" 
+                 Understated and versatile1 
+                                  "#335252" 
+                 Understated and versatile2 
+                                  "#d4dde1" 
+                 Understated and versatile3 
+                                  "#aa4b41" 
+                 Understated and versatile4 
+                                  "#2d3033" 
+                             Artic sunrise1 
+                                  "#ffccbb" 
+                             Artic sunrise2 
+                                  "#6eb5c0" 
+                             Artic sunrise3 
+                                  "#006c84" 
+                             Artic sunrise4 
+                                  "#e2e8e4" 
+                   Mediterranean afternoon1 
+                                  "#8c0004" 
+                   Mediterranean afternoon2 
+                                  "#c8000a" 
+                   Mediterranean afternoon3 
+                                  "#e8a735" 
+                   Mediterranean afternoon4 
+                                  "#e2c499" 
+                                Hazy grays1 
+                                  "#2c4a52" 
+                                Hazy grays2 
+                                  "#537072" 
+                                Hazy grays3 
+                                  "#8e9b97" 
+                                Hazy grays4 
+                                  "#f4ebdb" 
+                               City sights1 
+                                  "#c5001a" 
+                               City sights2 
+                                  "#e4e3db" 
+                               City sights3 
+                                  "#113743" 
+                               City sights4 
+                                  "#c5beba" 
+                        Retro and relaxing1 
+                                  "#d35c37" 
+                        Retro and relaxing2 
+                                  "#bf9a77" 
+                        Retro and relaxing3 
+                                  "#d6c6b9" 
+                        Retro and relaxing4 
+                                  "#97b8c2" 
+                              Green fields1 
+                                  "#919636" 
+                              Green fields2 
+                                  "#524a3a" 
+                              Green fields3 
+                                  "#fffae1" 
+                              Green fields4 
+                                  "#5a5f37" 
+                 Distintive and unexpected1 
+                                  "#52908b" 
+                 Distintive and unexpected2 
+                                  "#e5e2ca" 
+                 Distintive and unexpected3 
+                                  "#ddbc95" 
+                 Distintive and unexpected4 
+                                  "#e7472e" 
+                          Sleek and modern1 
+                                  "#2f2e33" 
+                          Sleek and modern2 
+                                  "#d5d6d2" 
+                          Sleek and modern3 
+                                  "#ffffff" 
+                          Sleek and modern4 
+                                  "#3a5199" 
+                             Orange accent1 
+                                  "#756867" 
+                             Orange accent2 
+                                  "#dad9d3" 
+                             Orange accent3 
+                                  "#353c3f" 
+                             Orange accent4 
+                                  "#ff8d3f" 
+                    Beyond black and white1 
+                                  "#31a2ac" 
+                    Beyond black and white2 
+                                  "#af1c1c" 
+                    Beyond black and white3 
+                                  "#f0eff0" 
+                    Beyond black and white4 
+                                  "#2f2f28" 
+                      Shabby chic neutrals1 
+                                  "#6c5f5b" 
+                      Shabby chic neutrals2 
+                                  "#cdab81" 
+                      Shabby chic neutrals3 
+                                  "#dac3b3" 
+                      Shabby chic neutrals4 
+                                  "#4f4a45" 
+                             Warm and cool1 
+                                  "#444c5c" 
+                             Warm and cool2 
+                                  "#ce5a57" 
+                             Warm and cool3 
+                                  "#78a5a3" 
+                             Warm and cool4 
+                                  "#e1b16a" 
+                 Industrial and in control1 
+                                  "#20232a" 
+                 Industrial and in control2 
+                                  "#acbebe" 
+                 Industrial and in control3 
+                                  "#f4f4ef" 
+                 Industrial and in control4 
+                                  "#a01d26" 
+Autumn oranges and complemtentary neutrals1 
+                                  "#d55448" 
+Autumn oranges and complemtentary neutrals2 
+                                  "#ffa577" 
+Autumn oranges and complemtentary neutrals3 
+                                  "#f9f9ff" 
+Autumn oranges and complemtentary neutrals4 
+                                  "#896e69" 
+                                Pool party1 
+                                  "#344d90" 
+                                Pool party2 
+                                  "#5cc5ef" 
+                                Pool party3 
+                                  "#ffb745" 
+                                Pool party4 
+                                  "#e7552c" 
+                         Classic metallics1 
+                                  "#080706" 
+                         Classic metallics2 
+                                  "#efefef" 
+                         Classic metallics3 
+                                  "#d1b280" 
+                         Classic metallics4 
+                                  "#594d46" 
+                      Subtle and versatile1 
+                                  "#5f968e" 
+                      Subtle and versatile2 
+                                  "#bfdccf" 
+                      Subtle and versatile3 
+                                  "#e05858" 
+                      Subtle and versatile4 
+                                  "#d5c9b1" 
+              Professional and traditional1 
+                                  "#962715" 
+              Professional and traditional2 
+                                  "#ffffff" 
+              Professional and traditional3 
+                                  "#1e1e20" 
+              Professional and traditional4 
+                                  "#bbc3c6" 
+                         Light and natural1 
+                                  "#688b8a" 
+                         Light and natural2 
+                                  "#a0b084" 
+                         Light and natural3 
+                                  "#faefd4" 
+                         Light and natural4 
+                                  "#a57c65" 
+                      Shadowy and dramatic1 
+                                  "#262f34" 
+                      Shadowy and dramatic2 
+                                  "#f34a4a" 
+                      Shadowy and dramatic3 
+                                  "#f1d3bc" 
+                      Shadowy and dramatic4 
+                                  "#615049" 
+                          Golden afternoon1 
+                                  "#882426" 
+                          Golden afternoon2 
+                                  "#cdbea7" 
+                          Golden afternoon3 
+                                  "#323030" 
+                          Golden afternoon4 
+                                  "#c29545" 
+                         Dark and handsome1 
+                                  "#42313a" 
+                         Dark and handsome2 
+                                  "#6c2d2c" 
+                         Dark and handsome3 
+                                  "#9f4636" 
+                         Dark and handsome4 
+                                  "#f1dcc9" 
+                   Technology meets nature1 
+                                  "#fbcd4b" 
+                   Technology meets nature2 
+                                  "#a3a599" 
+                   Technology meets nature3 
+                                  "#282623" 
+                   Technology meets nature4 
+                                  "#88a550" 
+                   Cheerful blues and pink1 
+                                  "#ffbebd" 
+                   Cheerful blues and pink2 
+                                  "#fcfcfa" 
+                   Cheerful blues and pink3 
+                                  "#337bae" 
+                   Cheerful blues and pink4 
+                                  "#1a405f" 
+                    Exotic and high impact1 
+                                  "#0f1f38" 
+                    Exotic and high impact2 
+                                  "#8e7970" 
+                    Exotic and high impact3 
+                                  "#f55449" 
+                    Exotic and high impact4 
+                                  "#1b4b5a" 
+                            Back to school1 
+                                  "#81715e" 
+                            Back to school2 
+                                  "#faae3d" 
+                            Back to school3 
+                                  "#e38533" 
+                            Back to school4 
+                                  "#e4535e" 
+                      Bright and painterly1 
+                                  "#061283" 
+                      Bright and painterly2 
+                                  "#fd3c3c" 
+                      Bright and painterly3 
+                                  "#ffb74c" 
+                      Bright and painterly4 
+                                  "#138d90" 
+                              Urban living1 
+                                  "#dddede" 
+                              Urban living2 
+                                  "#232122" 
+                              Urban living3 
+                                  "#a5c05b" 
+                              Urban living4 
+                                  "#7ba4a8" 
+                             1950s kitchen1 
+                                  "#b3dbc0" 
+                             1950s kitchen2 
+                                  "#fe0000" 
+                             1950s kitchen3 
+                                  "#fdf6f6" 
+                             1950s kitchen4 
+                                  "#67baca" 
+                             Smoky purples1 
+                                  "#a49592" 
+                             Smoky purples2 
+                                  "#727077" 
+                             Smoky purples3 
+                                  "#eed8c9" 
+                             Smoky purples4 
+                                  "#e99787" 
+                   Trendy and metropolitan1 
+                                  "#488a99" 
+                   Trendy and metropolitan2 
+                                  "#dbae58" 
+                   Trendy and metropolitan3 
+                                  "#fbe9e7" 
+                   Trendy and metropolitan4 
+                                  "#b4b4b4" 
+                      Fun and professional1 
+                                  "#4abdac" 
+                      Fun and professional2 
+                                  "#fc4a1a" 
+                      Fun and professional3 
+                                  "#f7b733" 
+                      Fun and professional4 
+                                  "#dfdce3" 
+                      Art history inspired1 
+                                  "#ffce00" 
+                      Art history inspired2 
+                                  "#0375b4" 
+                      Art history inspired3 
+                                  "#007849" 
+                      Art history inspired4 
+                                  "#262228" 
+                               Muted tones1 
+                                  "#c0b283" 
+                               Muted tones2 
+                                  "#dcd0c0" 
+                               Muted tones3 
+                                  "#f4f4f4" 
+                               Muted tones4 
+                                  "#373737" 
+                          Modern and clean1 
+                                  "#e37222" 
+                          Modern and clean2 
+                                  "#07889b" 
+                          Modern and clean3 
+                                  "#66b9bf" 
+                          Modern and clean4 
+                                  "#eeaa7b" 
+             Neon tones and sharp contrast1 
+                                  "#0e0b16" 
+             Neon tones and sharp contrast2 
+                                  "#a239ca" 
+             Neon tones and sharp contrast3 
+                                  "#4717f6" 
+             Neon tones and sharp contrast4 
+                                  "#e7dfdd" 
+                         Muted and minimal1 
+                                  "#96858f" 
+                         Muted and minimal2 
+                                  "#6d7993" 
+                         Muted and minimal3 
+                                  "#9099a2" 
+                         Muted and minimal4 
+                                  "#d5d5d5" 
+                             Warm and bold1 
+                                  "#000000" 
+                             Warm and bold2 
+                                  "#062f4f" 
+                             Warm and bold3 
+                                  "#813772" 
+                             Warm and bold4 
+                                  "#b82601" 
+                     Clean and highlighted1 
+                                  "#caebf2" 
+                     Clean and highlighted2 
+                                  "#a9a9a9" 
+                     Clean and highlighted3 
+                                  "#ff3b3f" 
+                     Clean and highlighted4 
+                                  "#efefef" 
+                                Warm tones1 
+                                  "#d7cec7" 
+                                Warm tones2 
+                                  "#565656" 
+                                Warm tones3 
+                                  "#76323f" 
+                                Warm tones4 
+                                  "#c09f80" 
+                          Sharp and modern1 
+                                  "#3cc47c" 
+                          Sharp and modern2 
+                                  "#1e392a" 
+                          Sharp and modern3 
+                                  "#e9c893" 
+                          Sharp and modern4 
+                                  "#828081" 
+                              Cool vs warm1 
+                                  "#18121e" 
+                              Cool vs warm2 
+                                  "#233237" 
+                              Cool vs warm3 
+                                  "#984b43" 
+                              Cool vs warm4 
+                                  "#eac67a" 
+                            Pretty pastels1 
+                                  "#bfd8d2" 
+                            Pretty pastels2 
+                                  "#fedcd2" 
+                            Pretty pastels3 
+                                  "#df744a" 
+                            Pretty pastels4 
+                                  "#dcb239" 
+                           Bold and punchy1 
+                                  "#e24e42" 
+                           Bold and punchy2 
+                                  "#e9b000" 
+                           Bold and punchy3 
+                                  "#eb6e80" 
+                           Bold and punchy4 
+                                  "#008f95" 
+                           Tints and tones1 
+                                  "#94618e" 
+                           Tints and tones2 
+                                  "#49274a" 
+                           Tints and tones3 
+                                  "#f4decb" 
+                           Tints and tones4 
+                                  "#f8eee7" 
+                           Splash of color1 
+                                  "#4484ce" 
+                           Splash of color2 
+                                  "#d9d9d9" 
+                           Splash of color3 
+                                  "#f9cf00" 
+                           Splash of color4 
+                                  "#f19f4d" 
+                 Elegant and sophisticated1 
+                                  "#0b83c5" 
+                 Elegant and sophisticated2 
+                                  "#328cc1" 
+                 Elegant and sophisticated3 
+                                  "#d9b310" 
+                 Elegant and sophisticated4 
+                                  "#1d2731" 
+                           Summer inspired1 
+                                  "#286da8" 
+                           Summer inspired2 
+                                  "#cd5360" 
+                           Summer inspired3 
+                                  "#b37d4e" 
+                           Summer inspired4 
+                                  "#438496" 
+                   Professional and modern1 
+                                  "#c5c1c0" 
+                   Professional and modern2 
+                                  "#0a1612" 
+                   Professional and modern3 
+                                  "#1a2930" 
+                   Professional and modern4 
+                                  "#f7ce3e" 
+        Bold blacks and vibrand highlights1 
+                                  "#000000" 
+        Bold blacks and vibrand highlights2 
+                                  "#ec576b" 
+        Bold blacks and vibrand highlights3 
+                                  "#4ec5c1" 
+        Bold blacks and vibrand highlights4 
+                                  "#e5e338" 
+            Clean gradient and fresh blues1 
+                                  "#77c9d4" 
+            Clean gradient and fresh blues2 
+                                  "#57bc90" 
+            Clean gradient and fresh blues3 
+                                  "#015249" 
+            Clean gradient and fresh blues4 
+                                  "#a5a5af" 
+                        Cheerful and sleek1 
+                                  "#6b7a8f" 
+                        Cheerful and sleek2 
+                                  "#f7882f" 
+                        Cheerful and sleek3 
+                                  "#f7c331" 
+                        Cheerful and sleek4 
+                                  "#dcc7aa" 
+                      Luxurious and modern1 
+                                  "#0f1626" 
+                      Luxurious and modern2 
+                                  "#ab987a" 
+                      Luxurious and modern3 
+                                  "#ff533d" 
+                      Luxurious and modern4 
+                                  "#f5f5f5" 
+                       Unique and striking1 
+                                  "#cf6766" 
+                       Unique and striking2 
+                                  "#30415d" 
+                       Unique and striking3 
+                                  "#031424" 
+                       Unique and striking4 
+                                  "#8eaebd" 
+             Unexpected color combinations1 
+                                  "#6e3667" 
+             Unexpected color combinations2 
+                                  "#88d317" 
+             Unexpected color combinations3 
+                                  "#1a0315" 
+             Unexpected color combinations4 
+                                  "#535353" 
+                            Retro inspired1 
+                                  "#fedc3d" 
+                            Retro inspired2 
+                                  "#000000" 
+                            Retro inspired3 
+                                  "#01abaa" 
+                            Retro inspired4 
+                                  "#fea680" 
+                         Antique and clean1 
+                                  "#b56357" 
+                         Antique and clean2 
+                                  "#b4dbc0" 
+                         Antique and clean3 
+                                  "#eae3ea" 
+                         Antique and clean4 
+                                  "#a7b3a5" 
+                    Striking and energetic1 
+                                  "#f81b84" 
+                    Striking and energetic2 
+                                  "#f5ce28" 
+                    Striking and energetic3 
+                                  "#43c0f6" 
+                    Striking and energetic4 
+                                  "#f2eee2" 
+                          Fresh and lively1 
+                                  "#4cdef5" 
+                          Fresh and lively2 
+                                  "#a4d555" 
+                          Fresh and lively3 
+                                  "#ff5992" 
+                          Fresh and lively4 
+                                  "#841983" 
+                           Clean and crisp1 
+                                  "#99d3df" 
+                           Clean and crisp2 
+                                  "#88bbd6" 
+                           Clean and crisp3 
+                                  "#cdcdcd" 
+                           Clean and crisp4 
+                                  "#e9e9e9" 
+                 Colorful without clashing1 
+                                  "#fa7c92" 
+                 Colorful without clashing2 
+                                  "#6ec4d8" 
+                 Colorful without clashing3 
+                                  "#fff7c0" 
+                 Colorful without clashing4 
+                                  "#66ab8c" 
+                             Cool and calm1 
+                                  "#6bbaa7" 
+                             Cool and calm2 
+                                  "#fba100" 
+                             Cool and calm3 
+                                  "#6c648b" 
+                             Cool and calm4 
+                                  "#b6a19e" 
+                          Modern and muted1 
+                                  "#a9b7c0" 
+                          Modern and muted2 
+                                  "#c7d8c6" 
+                          Modern and muted3 
+                                  "#efd9c1" 
+                          Modern and muted4 
+                                  "#cccbc6" 
+                          Earthy and fresh1 
+                                  "#945d60" 
+                          Earthy and fresh2 
+                                  "#626e60" 
+                          Earthy and fresh3 
+                                  "#af473c" 
+                          Earthy and fresh4 
+                                  "#3c3c3c" 
+           High saturation and high energy1 
+                                  "#fe65b7" 
+           High saturation and high energy2 
+                                  "#e9c904" 
+           High saturation and high energy3 
+                                  "#8fc33a" 
+           High saturation and high energy4 
+                                  "#62edd6" 
+                        Warm and wonderful1 
+                                  "#7cd8d5" 
+                        Warm and wonderful2 
+                                  "#f53240" 
+                        Warm and wonderful3 
+                                  "#f9be02" 
+                        Warm and wonderful4 
+                                  "#02c8a7" 
+                           Vintage charm 21 
+                                  "#cda34f" 
+                           Vintage charm 22 
+                                  "#e9e7da" 
+                           Vintage charm 23 
+                                  "#636b46" 
+                           Vintage charm 24 
+                                  "#373f27" 
+                          Cool jewel tones1 
+                                  "#67aeca" 
+                          Cool jewel tones2 
+                                  "#675682" 
+                          Cool jewel tones3 
+                                  "#5f0f4e" 
+                          Cool jewel tones4 
+                                  "#e52a6f" 
+                               Stormy hues1 
+                                  "#494e6b" 
+                               Stormy hues2 
+                                  "#98878f" 
+                               Stormy hues3 
+                                  "#985e6d" 
+                               Stormy hues4 
+                                  "#192231" 
+                      Clean and collegiate1 
+                                  "#4abdac" 
+                      Clean and collegiate2 
+                                  "#99ced4" 
+                      Clean and collegiate3 
+                                  "#eeb6b7" 
+                      Clean and collegiate4 
+                                  "#6e7376" 
+                          Simple and fresh1 
+                                  "#414141" 
+                          Simple and fresh2 
+                                  "#ccdfcb" 
+                          Simple and fresh3 
+                                  "#ff6a5c" 
+                          Simple and fresh4 
+                                  "#056571" 
+                            Tropical tones1 
+                                  "#1fb58f" 
+                            Tropical tones2 
+                                  "#eab126" 
+                            Tropical tones3 
+                                  "#f24c4e" 
+                            Tropical tones4 
+                                  "#1b7b34" 
+                       Bold feature colors1 
+                                  "#e14658" 
+                       Bold feature colors2 
+                                  "#22252c" 
+                       Bold feature colors3 
+                                  "#3f3250" 
+                       Bold feature colors4 
+                                  "#c0b3a0" 
+                             Antique tones1 
+                                  "#155765" 
+                             Antique tones2 
+                                  "#57652a" 
+                             Antique tones3 
+                                  "#ab9353" 
+                             Antique tones4 
+                                  "#4d2c3d" 
+                             Neon and bold1 
+                                  "#d48cf8" 
+                             Neon and bold2 
+                                  "#0e8044" 
+                             Neon and bold3 
+                                  "#b5e582" 
+                             Neon and bold4 
+                                  "#08302f" 
+                           Simple but bold1 
+                                  "#f7ef6a" 
+                           Simple but bold2 
+                                  "#93c178" 
+                           Simple but bold3 
+                                  "#465c8b" 
+                           Simple but bold4 
+                                  "#dfdce3" 
+                       Corporate and sleek1 
+                                  "#f7f5e6" 
+                       Corporate and sleek2 
+                                  "#333a56" 
+                       Corporate and sleek3 
+                                  "#52658f" 
+                       Corporate and sleek4 
+                                  "#e8e8e8" 
+                        Modern and minimal1 
+                                  "#c06014" 
+                        Modern and minimal2 
+                                  "#eddbc0" 
+                        Modern and minimal3 
+                                  "#000000" 
+                        Modern and minimal4 
+                                  "#cdcdcd" 
+                          Fun and cheerful1 
+                                  "#a7d2cb" 
+                          Fun and cheerful2 
+                                  "#f2d388" 
+                          Fun and cheerful3 
+                                  "#c98474" 
+                          Fun and cheerful4 
+                                  "#874c62" 
+                            Sunny and calm1 
+                                  "#cae4db" 
+                            Sunny and calm2 
+                                  "#dcae1d" 
+                            Sunny and calm3 
+                                  "#00303f" 
+                            Sunny and calm4 
+                                  "#7a9d96" 
+                                   Pop art1 
+                                  "#d7dd35" 
+                                   Pop art2 
+                                  "#575da9" 
+                                   Pop art3 
+                                  "#e42d9f" 
+                                   Pop art4 
+                                  "#02558b" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sample_canva_colors <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(<span class="fu">unlist</span>(ggthemes<span class="sc">::</span>canva_palettes), n) <span class="co"># function to sample n colors from the unlisted palettes</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>polar_art <span class="ot">&lt;-</span> <span class="cf">function</span>(seed, n, palette) {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># create a tibble containing random values for aesthetic</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  dat <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x0 =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0 =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y1 =</span> y0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">shade =</span> <span class="fu">runif</span>(n), </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">runif</span>(n)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot segments in various colours, using </span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># polar coordinates and a gradient palette</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> x0,</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y0,</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">xend =</span> x1,</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">yend =</span> y1,</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> shade,</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> size</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">+</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="sc">+</span> </span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_gradientn</span>(<span class="at">colours =</span> palette) <span class="sc">+</span> </span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span> </span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="co"># see above for annotations</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="fu">polar_art</span>(</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">seed =</span> <span class="dv">2</span>, </span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> <span class="dv">50</span>, </span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">palette =</span> <span class="fu">c</span>(<span class="fu">sample_named_colours</span>(<span class="dv">120</span>)) <span class="co"># see above for annotations</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ES193DS-generativeart_project_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4" class="level4">
+<h4 class="anchored" data-anchor-id="exercise-4">4. Exercise 4</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># function to generate sample data</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">seed =</span> <span class="cn">NULL</span>, <span class="at">n =</span> <span class="dv">200</span>) {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(seed)) <span class="fu">set.seed</span>(seed)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x0 =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y0 =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x1 =</span> x0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y1 =</span> y0 <span class="sc">+</span> <span class="fu">runif</span>(n, <span class="at">min =</span> <span class="sc">-</span>.<span class="dv">2</span>, <span class="at">max =</span> .<span class="dv">2</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shade =</span> <span class="fu">runif</span>(n), </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fu">runif</span>(n),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">22</span>, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># generate sample data</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>dat1 <span class="ot">&lt;-</span> <span class="fu">sample_data</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">123</span>) </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">&lt;-</span> <span class="fu">sample_data</span>(<span class="at">n =</span> <span class="dv">200</span>, <span class="at">seed =</span> <span class="dv">456</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y0 =</span> .<span class="dv">3</span> <span class="sc">+</span> y0 <span class="sc">*</span> .<span class="dv">8</span>, <span class="at">y1 =</span> .<span class="dv">3</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co"># function to create the main plot</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>polar_styled_plot <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat1 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">size =</span> size <span class="sc">*</span> <span class="dv">4</span>),</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> x0, <span class="at">y =</span> y0, <span class="at">xend =</span> x1, <span class="at">yend =</span> y1, <span class="at">colour =</span> shade, <span class="at">size =</span> size)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># add segments for dat1 with modified size</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">size =</span> size <span class="sc">/</span> <span class="dv">7</span>), </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> x0, <span class="at">y =</span> y0, <span class="at">xend =</span> x1, <span class="at">yend =</span> y1),</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">lineend =</span> <span class="st">"round"</span>, </span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"white"</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># add segments for dat2 with modified size and lineend</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_segment</span>(</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">size =</span> size <span class="sc">/</span> <span class="dv">30</span>), </span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> x0, <span class="at">y =</span> y0, <span class="at">xend =</span> x1, <span class="at">yend =</span> y1),</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">lineend =</span> <span class="st">"round"</span>, </span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"violetred1"</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># same as above</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat2 <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">size =</span> size <span class="sc">*</span> <span class="dv">4</span>),</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> x0, <span class="at">y =</span> y0),</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="st">"lavender"</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># same as above</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_polar</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span> <span class="co"># polar coordinates</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">oob =</span> scales<span class="sc">::</span>oob_keep</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># y axis limits</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">oob =</span> scales<span class="sc">::</span>oob_keep</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> <span class="co"># x axis limits</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_colour_gradientn</span>(<span class="at">colours =</span> <span class="fu">sample_canva</span>(<span class="at">seed =</span> <span class="dv">3</span>)) <span class="sc">+</span> <span class="co"># color gradient</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="sc">+</span> </span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>() <span class="sc">+</span> </span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="fu">guide_none</span>(),</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fu">guide_none</span>(),</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="fu">guide_none</span>(),</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">shape =</span> <span class="fu">guide_none</span>() <span class="co"># remove legends</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate and print the plot</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">polar_styled_plot</span>()</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ES193DS-generativeart_project_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="art-of-your-choice-shading-tricks" class="level4">
+<h4 class="anchored" data-anchor-id="art-of-your-choice-shading-tricks">Art of your choice: shading tricks</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rayshader)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ambient)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tictoc)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>is_within_circle <span class="ot">&lt;-</span> <span class="cf">function</span>(x_coord, y_coord, x_center, y_center, radius) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  (x_coord <span class="sc">-</span> x_center)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (y_coord <span class="sc">-</span> y_center)<span class="sc">^</span><span class="dv">2</span> <span class="sc">&lt;</span> radius<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>} <span class="co"># takes coordinate vectors as inputs, returns logical vector when coordinates fall within values</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>additive_circles <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">pixels =</span> <span class="dv">1500</span>, <span class="at">seed =</span> <span class="cn">NULL</span>) { <span class="co"># generates n circles at random</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="sc">!</span><span class="fu">is.null</span>(seed)) <span class="fu">set.seed</span>(seed)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># setup canvas, coordinate columns x and y</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  art <span class="ot">&lt;-</span> <span class="fu">long_grid</span>(</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> pixels),</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> pixels)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  art<span class="sc">$</span>paint <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># indicates proportion of circles that each point falls in</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sample a random circle</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    x_center <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> .<span class="dv">3</span>, <span class="at">max =</span> .<span class="dv">7</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    y_center <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> .<span class="dv">3</span>, <span class="at">max =</span> .<span class="dv">7</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    radius <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="at">min =</span> .<span class="dv">05</span>, <span class="at">max =</span> .<span class="dv">25</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add +1 to all points inside the circle</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    art <span class="ot">&lt;-</span> art <span class="sc">|&gt;</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">paint =</span> paint <span class="sc">+</span> <span class="fu">is_within_circle</span>(</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>          x, y, x_center, y_center, radius</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># normalise paint to [0, 1] range and return</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  art<span class="sc">$</span>paint <span class="ot">&lt;-</span> <span class="fu">normalise</span>(art<span class="sc">$</span>paint)</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(art)</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>circle_art <span class="ot">&lt;-</span> <span class="fu">additive_circles</span>(<span class="at">seed =</span> <span class="dv">300</span>) <span class="co"># generating output from system with seed</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>circle_array <span class="ot">&lt;-</span> circle_art <span class="sc">|&gt;</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.array</span>(<span class="at">value =</span> paint)  <span class="co"># matrix of values</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>circle_shadow <span class="ot">&lt;-</span> <span class="fu">ray_shade</span>( <span class="co"># shading</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">heightmap =</span> circle_array, <span class="co"># using matrix</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">sunaltitude =</span> <span class="dv">23</span>, </span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">sunangle =</span> <span class="dv">135</span>, <span class="co"># positions of illumination source</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>  <span class="at">zscale =</span> .<span class="dv">01</span>, <span class="co"># specify scale of z-axis, giving circles volume</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>  <span class="at">multicore =</span> <span class="cn">TRUE</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>circle_scape <span class="ot">&lt;-</span> circle_array <span class="sc">|&gt;</span> </span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">height_shade</span>() <span class="sc">|&gt;</span> <span class="co"># create texture</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_shadow</span>(</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">shadowmap =</span> circle_shadow, <span class="co"># add shadow</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_darken =</span> .<span class="dv">1</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="fu">tic</span>() <span class="co"># measuring time elapsed</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_map</span>(circle_scape, <span class="at">rotate =</span> <span class="dv">180</span>) <span class="co"># draw final image, rotate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="ES193DS-generativeart_project_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span>() <span class="co"># measuring time elapsed between points</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.49 sec elapsed</code></pre>
+</div>
+</div>
 </section>
 <section id="art-of-your-choice-iteration-tiles-pixels" class="level4">
 <h4 class="anchored" data-anchor-id="art-of-your-choice-iteration-tiles-pixels">Art of your choice: iteration, tiles, pixels</h4>
